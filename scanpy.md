@@ -9,4 +9,4 @@ adata = sc.read_h5ad(
 sc.set_figure_params(figsize=[20,20], dpi = 200)
 
 # scatter plot with custom coords
-sc.pl.scatter(adata, basis = 'scviumap', color = ['batch'])
+sc.pl.scatter(adata, size = 5, basis = 'scviumap', color = ['batch'])
