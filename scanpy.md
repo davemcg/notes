@@ -10,3 +10,7 @@ sc.set_figure_params(figsize=[20,20], dpi = 200)
 
 # scatter plot with custom coords
 sc.pl.scatter(adata, size = 5, basis = 'scviumap', color = ['batch'])
+
+# extract meta to pandas DF and output to csv
+obsm_data=pd.DataFrame(adata.obsm['X_umap'])
+obsm_data.to_csv("umap.csv", sep=",")
