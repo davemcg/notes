@@ -26,11 +26,13 @@ obsm_data.to_csv("umap.csv", sep=",")
 
 # In R, build a anndata object from a seurat obj
 ```
-# you need to set up your own conda env with scanpy installed within it
+# you should set up a conda env with scanpy 
 # see scanpy guides for help
 Sys.setenv(RETICULATE_PYTHON = "/data/mcgaugheyd/conda/envs/scanpy/bin/python")
 library(reticulate)
 sc <- import("scanpy")
+library(Seurat)
+library(Matrix)
 exprs <- GetAssayData(seurat)
 meta <- seurat[[]]
 feature_meta <- GetAssay(seurat)[[]]
@@ -40,6 +42,6 @@ embedding <- Embeddings(seurat, reduction)
 # build anndata obj with a subset of the genes counts
 # as they aren't used in clustering
 # and it makes the obj creation far faster with less mem usage
-# adata_seurat = sc$AnnData(X = t(as.matrix(exprs[1:10,])), obs = meta, var = feature_meta[1:10,])
-adata_seurat = sc$AnnData(X = t(as.matrix(exprs)), obs = meta, var = feature_meta)
+# adata_seurat = sc$AnnData(X = t(exprs[1:10,]), obs = meta, var = feature_meta[1:10,])
+adata_seurat = sc$AnnData(X = t(exprs), obs = meta, var = feature_meta)
 ```
