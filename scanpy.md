@@ -23,3 +23,23 @@ import pandas as pd
 obsm_data=pd.DataFrame(adata.obsm['X_umap'])
 obsm_data.to_csv("umap.csv", sep=",")
 ```
+
+# In R, build a anndata object from a seurat obj
+```
+# you need to set up your own conda env with scanpy installed within it
+# see scanpy guides for help
+Sys.setenv(RETICULATE_PYTHON = "/data/mcgaugheyd/conda/envs/scanpy/bin/python")
+library(reticulate)
+sc <- import("scanpy")
+exprs <- GetAssayData(seurat)
+meta <- seurat[[]]
+feature_meta <- GetAssay(seurat)[[]]
+reduction <- 'PCA'
+embedding <- Embeddings(seurat, reduction)
+# if you are clustering then you can
+# build anndata obj with a subset of the genes counts
+# as they aren't used in clustering
+# and it makes the obj creation far faster with less mem usage
+# adata_seurat = sc$AnnData(X = t(as.matrix(exprs[1:10,])), obs = meta), var = feature_meta[1:10,])
+adata_seurat = sc$AnnData(X = t(as.matrix(exprs)), obs = meta), var = feature_meta)
+```
