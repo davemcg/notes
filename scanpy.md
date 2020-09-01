@@ -1,7 +1,7 @@
 # scanpy 1.6 notes
 
 # set parallelization globally
-sc.settings.n_jobs = 8
+`sc.settings.n_jobs = 8`
 
 # import h5ad anndata
 ```
