@@ -40,6 +40,6 @@ embedding <- Embeddings(seurat, reduction)
 # build anndata obj with a subset of the genes counts
 # as they aren't used in clustering
 # and it makes the obj creation far faster with less mem usage
-# adata_seurat = sc$AnnData(X = t(as.matrix(exprs[1:10,])), obs = meta), var = feature_meta[1:10,])
-adata_seurat = sc$AnnData(X = t(as.matrix(exprs)), obs = meta), var = feature_meta)
+# adata_seurat = sc$AnnData(X = t(as.matrix(exprs[1:10,])), obs = meta, var = feature_meta[1:10,])
+adata_seurat = sc$AnnData(X = t(as.matrix(exprs)), obs = meta, var = feature_meta)
 ```
