@@ -24,6 +24,11 @@ obsm_data=pd.DataFrame(adata.obsm['X_umap'])
 obsm_data.to_csv("umap.csv", sep=",")
 ```
 
+# Remove cells with certain critera in `obs`
+```
+adata_new = adata[~adata.obs['CellType'].isin(['NA', 'Doublet','Doublets']),:]
+```
+
 # In R, build a anndata object from a seurat obj
 ```
 # you should set up a conda env with scanpy 
