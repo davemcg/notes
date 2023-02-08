@@ -1,9 +1,9 @@
 # iTerm
-(superior terminal)
+(superior terminal to Terminal)
 https://iterm2.com
 
 ## Change from zsh to bash
-chsh -s /bin/bash
+`chsh -s /bin/bash`
 
 # ssh
 Copy over existing keys
