@@ -49,6 +49,20 @@ Install pkg (make sure it is Apple silicon arm64) from https://cran.r-project.or
 ## rstudio desktop
 https://posit.co/download/rstudio-desktop/
 
+# System Preferences
+Keyboard: enable "Keyboard navigation", max "Key repeat rate", second to min "Delay until repeat"
+
+Trackpad: max "Tracking speed", enable "Tap to click", 
+
+Appearance: Set "Show scroll bars" to "always"
+
+# Finder
+
+View -> Show path bar and Show status bar
+
+Finder settings -> enable "Show all filename settings"
+
+
 # energiza
 https://appgineers.de/energiza/
 Allows you to keep battery state of charge within user-set limits (keeping battery regularly at 100% or below 20% is damaging for the battery)
