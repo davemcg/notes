@@ -50,17 +50,17 @@ Install pkg (make sure it is Apple silicon arm64) from https://cran.r-project.or
 https://posit.co/download/rstudio-desktop/
 
 # System Preferences
-Keyboard: enable "Keyboard navigation", max "Key repeat rate", second to min "Delay until repeat"
+Keyboard: enable `Keyboard navigation`, max `Key repeat rate`, second to min `Delay until repeat`
 
-Trackpad: max "Tracking speed", enable "Tap to click", 
+Trackpad: max `Tracking speed`, enable `Tap to click`, 
 
-Appearance: Set "Show scroll bars" to "always"
+Appearance: Set `Show scroll bars` to `always`
 
 # Finder
 
-View -> Show path bar and Show status bar
+View -> `Show path bar` and `Show status bar`
 
-Finder settings -> enable "Show all filename settings"
+Finder settings -> enable `Show all filename settings`
 
 
 # energiza
