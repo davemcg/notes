@@ -1,0 +1,17 @@
+# R ensembl to gene info 
+conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
+                                    keys=gsub('\\.\\d+','',table$ensembl),
+                                    columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME"), keytype="ENSEMBL") 
+
+conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
+                                    keys=gsub('\\.\\d+','',table$gene_symbol),
+                                    columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME"), keytype="SYMBOL") 
+
+# R aggregate columns with data.table
+data_table <- data_table[, lapply(.SD, sum, na.rm=TRUE), by= GROUPING_COL ]
+
+# R ggplot2 remove legend
++ theme(legend.position = "none")
+
+# R args
+args = commandArgs(trailingOnly=TRUE)
