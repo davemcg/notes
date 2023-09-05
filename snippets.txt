@@ -18,3 +18,6 @@ args = commandArgs(trailingOnly=TRUE)
 
 # R hypergeomtric testing
 phyper(overlap-1, group2, total-group2, group1,lower.tail= FALSE)
+
+# R pull genes for a GO term
+AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, keys=c("GO:0097542"), columns = c('ENSEMBL','SYMBOL','GENENAME'), keytype = "GOALL")
