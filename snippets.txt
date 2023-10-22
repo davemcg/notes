@@ -22,6 +22,10 @@ phyper(overlap-1, group2, total-group2, group1,lower.tail= FALSE)
 # R pull genes for a GO term
 AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, keys=c("GO:0097542"), columns = c('ENSEMBL','SYMBOL','GENENAME'), keytype = "GOALL")
 
+# R pull info for a GO Term
+def <- GO.db::GOTERM[[id]]@Definition
+term <- GO.db::GOTERM[[id]]@Term
+
 # R arbitrary enrichment testing
 ## http://bioconductor.riken.jp/packages/3.9/bioc/vignettes/fgsea/inst/doc/fgseaMultilevel-tutorial.html
 ## examplePathways is a list of chr vectors of genes 
