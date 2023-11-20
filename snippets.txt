@@ -13,6 +13,9 @@ data_table <- data_table[, lapply(.SD, sum, na.rm=TRUE), by= GROUPING_COL ]
 # R ggplot2 remove legend
 + theme(legend.position = "none")
 
+# R ggplot2 force legend dot/alpha params
++ guides(color = guide_legend(override.aes = list(size = 4,alpha=1))) 
+
 # R args
 args = commandArgs(trailingOnly=TRUE)
 
