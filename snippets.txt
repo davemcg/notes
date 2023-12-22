@@ -4,7 +4,7 @@ conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db,
                                     columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME", "ENTREZID"), keytype="ENSEMBL") 
 # R get gene coords 
 ## uses conv_table from above
-coord_table <- AnnotationDbi::select(TxDb.Mmusculus.UCSC.mm39.knownGene::TxDb.Mmusculus.UCSC.mm39.knownGene, 
+coord_table <- AnnotationDbi::select(TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene, 
                                      columns = c('GENEID', 'TXCHROM','TXSTART'),
                                      keys = conv_table$ENTREZID,
                                      keytype = 'GENEID')
