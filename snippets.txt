@@ -1,11 +1,25 @@
 # R ensembl to gene info 
 conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
                                     keys=gsub('\\.\\d+','',table$ensembl),
-                                    columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME"), keytype="ENSEMBL") 
+                                    columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME", "ENTREZID"), keytype="ENSEMBL") 
+# R get gene coords 
+## uses conv_table from above
+coord_table <- AnnotationDbi::select(TxDb.Mmusculus.UCSC.mm39.knownGene::TxDb.Mmusculus.UCSC.mm39.knownGene, 
+                                     columns = c('GENEID', 'TXCHROM','TXSTART'),
+                                     keys = conv_table$ENTREZID,
+                                     keytype = 'GENEID')
+## now summarise coords onto gene symbol (via mean)
+gene_coords <- conv_table %>% 
+  left_join(coord_table, by = c("ENTREZID" = "GENEID")) %>% 
+  group_by(SYMBOL) %>% 
+  summarise(chr = unique(TXCHROM), 
+            start = mean(TXSTART))
 
-conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
-                                    keys=gsub('\\.\\d+','',table$gene_symbol),
-                                    columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME"), keytype="SYMBOL") 
+gene_coords <- entrez_table %>% 
+  left_join(coord_table, by = c("ENTREZID" = "GENEID")) %>% 
+  group_by(SYMBOL) %>% 
+  summarise(chr = unique(TXCHROM), 
+            start = mean(TXSTART))
 
 # R aggregate columns with data.table
 data_table <- data_table[, lapply(.SD, sum, na.rm=TRUE), by= GROUPING_COL ]
