@@ -17,6 +17,13 @@ sc.set_figure_params(figsize=[20,20], dpi = 200)
 ```
 sc.pl.scatter(adata, size = 5, basis = 'scviumap', color = ['batch'])
 ```
+
+# scatter plot (gene) to file
+```
+# sc.pp.log1p(adata) 
+sc.pl.scatter(adata, size = 5, basis = 'umap', color = ['ENSG00000163914'], save = 'rho.png',use_raw=False, show = False)
+```
+
 # extract meta to pandas DF and output to csv
 ```
 import pandas as pd
