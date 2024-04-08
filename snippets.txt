@@ -52,6 +52,15 @@ fgseaMultilevelRes <- fgseaMultilevel(pathways = examplePathways,
                                       minSize=15,
                                       maxSize=500)
 
+# R / ggplot fixed color palette
+## first set col to factor
+all$Diff <- factor(all$Diff, levels = unique(all$Diff))
+## matched to number of factor levels
+custom_colors <- c("#E5614CFF", "#8C57A2FF", "#358DB9FF")
+names(custom_colors) <- levels(all$Diff)
+col_scale <- scale_colour_manual(name = "Diff",values = custom_colors)
+## to use just do " + col_scale" in ggplot2
+
 ####################################
 # R notebook header and first chunk to hide extraneous output
 ---
