@@ -58,3 +58,11 @@ embedding <- Embeddings(seurat, reduction)
 adata_seurat = sc$AnnData(X = t(exprs), obs = meta, var = feature_meta)
 adata_seurat$obsm$update(X_pca = embedding)
 ```
+
+# Build Count Matrix
+```
+# first subset to certain cells (rods)
+rod_adata = adata[adata.obs['MajorCellType'] == 'rod']
+rod_df = pd.DataFrame(data=rod_adata.X.toarray(), index=rod_adata.obs_names, columns=rod_adata.var_names)
+rod_df.to_csv('~/Desktop/rod_df.csv.gz')
+```
