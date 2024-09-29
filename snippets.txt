@@ -61,6 +61,12 @@ names(custom_colors) <- levels(all$Diff)
 col_scale <- scale_colour_manual(name = "Diff",values = custom_colors)
 ## to use just do " + col_scale" in ggplot2
 
+# R tidyverse variable selection
+## https://dplyr.tidyverse.org/articles/programming.html
+test_fun <- function(data_frame, select_col){
+  data_frame %>% select({{ select_col }}) 
+}
+
 ####################################
 # R notebook header and first chunk to hide extraneous output
 ---
