@@ -63,9 +63,17 @@ col_scale <- scale_colour_manual(name = "Diff",values = custom_colors)
 
 # R tidyverse variable selection
 ## https://dplyr.tidyverse.org/articles/programming.html
-test_fun <- function(data_frame, select_col){
+## NOTE THE DIFFERENCE IF YOU WANT TO USE QUOTED VARIABLES IN A FUNCTION
+test_fun1 <- function(data_frame, select_col){
   data_frame %>% select({{ select_col }}) 
 }
+test_fun1(data, col)
+
+test_fun2 <- function(data_frame, select_col){
+  data_frame %>% select( .data[[select_col]] ) 
+}
+test_fun2(data, "col")
+
 
 ####################################
 # R notebook header and first chunk to hide extraneous output
