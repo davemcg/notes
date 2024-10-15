@@ -74,6 +74,8 @@ test_fun2 <- function(data_frame, select_col){
 }
 test_fun2(data, "col")
 
+# r formula as a string
+as.formula("~ batch + condition")
 
 ####################################
 # R notebook header and first chunk to hide extraneous output
