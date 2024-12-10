@@ -108,3 +108,9 @@ knitr::opts_chunk$set(
 )
 ```
 ####################################
+
+# sqlite3
+## change temp dir
+PRAGMA SQLITE_TMPDIR = '/data/data1';
+## add index to multiple columns
+CREATE INDEX diff_testing_ba ON diff_testing(Base, Against);
