@@ -67,6 +67,9 @@ rod_df = pd.DataFrame(data=rod_adata.X.toarray(), index=rod_adata.obs_names, col
 rod_df.to_csv('~/Desktop/rod_df.csv.gz')
 ```
 
+# reset index with var column
+adata.var.index = adata.var.NEW_COLUMN.values.astype(str)
+
 # Counts across multiple columns (pandas)
 ```
 adata.obs[['Manual_CellType', 'Machine_CellType']].apply(pd.Series.value_counts)
