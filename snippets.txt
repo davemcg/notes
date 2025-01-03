@@ -1,4 +1,6 @@
-# R ensembl to gene info 
+#####################################
+# R
+# ensembl to gene info 
 conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
                                     keys=gsub('\\.\\d+','',table$ensembl),
                                     columns=c("ENSEMBL","SYMBOL", "MAP","GENENAME", "ENTREZID"), keytype="ENSEMBL") 
@@ -77,7 +79,7 @@ test_fun2(data, "col")
 # r formula as a string
 as.formula("~ batch + condition")
 
-####################################
+#####################################
 # R notebook header and first chunk to hide extraneous output
 ---
 title: "The title"
@@ -107,10 +109,18 @@ knitr::opts_chunk$set(
   dpi=300
 )
 ```
-####################################
+#####################################
+# python / pandas
+## pandas - turn a pd.DataFrame into a dictionary
+## third column is used as the key
+## the rest of the columns are used as values
+gene_dict  = gene_table.set_index(gene_table.columns[2]).T.to_dict('list')
 
+
+######################################
 # sqlite3
 ## change temp dir
 PRAGMA SQLITE_TMPDIR = '/data/data1';
 ## add index to multiple columns
 CREATE INDEX diff_testing_ba ON diff_testing(Base, Against);
+######################################
