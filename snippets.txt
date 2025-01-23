@@ -79,6 +79,8 @@ test_fun2(data, "col")
 # r formula as a string
 as.formula("~ batch + condition")
 
+# custom ggplot continuous color palette
+sc <- scale_colour_gradientn(colours = colorspace::lighten(c('yellow','purple','orange', 'red', 'green', 'blue'), amount = 0.2), limits=c(0, 3.5))
 #####################################
 # R notebook header and first chunk to hide extraneous output
 ---
