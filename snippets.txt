@@ -35,6 +35,9 @@ data_table <- data_table[, lapply(.SD, sum, na.rm=TRUE), by= GROUPING_COL ]
 # R args
 args = commandArgs(trailingOnly=TRUE)
 
+# R format scientific number to reduce digits
+format(pvalue, digits = 3)
+
 # R hypergeomtric testing
 phyper(overlap-1, group2, total-group2, group1,lower.tail= FALSE)
 
