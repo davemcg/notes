@@ -87,6 +87,11 @@ test_fun2(data, "col")
 # r formula as a string
 as.formula("~ batch + condition")
 
+# R piped stat testing
+## compatible with grouping operations and dplyr
+your_data %>% group_by(cell_line, date) %>% 
+   rstatix::t_test(gene_expression ~ condition)
+
 # custom ggplot continuous color palette
 sc <- scale_colour_gradientn(colours = colorspace::lighten(c('yellow','purple','orange', 'red', 'green', 'blue'), amount = 0.2), limits=c(0, 3.5))
 #####################################
