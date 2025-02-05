@@ -57,6 +57,11 @@ fgseaMultilevelRes <- fgseaMultilevel(pathways = examplePathways,
                                       minSize=15,
                                       maxSize=500)
 
+# R piped stat testing
+## compatible with grouping operations and dplyr
+your_data %>% group_by(cell_line, date) %>% 
+   rstatix::t_test(gene_expression ~ condition)
+
 # R / ggplot fixed color palette
 ## first set col to factor
 all$Diff <- factor(all$Diff, levels = unique(all$Diff))
