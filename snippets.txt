@@ -26,6 +26,10 @@ gene_coords <- entrez_table %>%
 # R aggregate columns with data.table
 data_table <- data_table[, lapply(.SD, sum, na.rm=TRUE), by= GROUPING_COL ]
 
+# R ggplot2 dot size
+## must set stroke to 0 to get tiny points
++ geom_point(size = 0.1, stroke = 0)
+
 # R ggplot2 remove legend
 + theme(legend.position = "none")
 
