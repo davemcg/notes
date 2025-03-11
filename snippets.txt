@@ -143,3 +143,10 @@ PRAGMA SQLITE_TMPDIR = '/data/data1';
 ## add index to multiple columns
 CREATE INDEX diff_testing_ba ON diff_testing(Base, Against);
 ######################################
+
+
+######################################
+# bash
+## go into every folder and rename *fastq.gz to fastq/folder_*fastq.gz
+for i in */*fastq.gz; do echo mv $i fastq/`dirname $i`_`basename $i` ; done
+######################################
