@@ -61,6 +61,10 @@ fgseaMultilevelRes <- fgseaMultilevel(pathways = examplePathways,
                                       minSize=15,
                                       maxSize=500)
 
+# order y axis (Sample) by numeric column (batch) and reversing the order (.desc)
+ggplot(aes(y=forcats::fct_reorder(Sample, batch, .desc = TRUE), 
+             x=value))
+
 # R piped stat testing
 ## compatible with grouping operations and dplyr
 your_data %>% group_by(cell_line, date) %>% 
