@@ -132,6 +132,12 @@ knitr::opts_chunk$set(
   dpi=300
 )
 ```
+
+
+# R native pipe "hack" for dots
+list.files('path/to/something') |> (\(.) grep( "obs", ., value = TRUE))() # base R pipe
+list.files('path/to/something') %>% grep( "obs", ., value = TRUE) # magrittr pipe
+
 #####################################
 # python / pandas
 ## pandas - turn a pd.DataFrame into a dictionary
