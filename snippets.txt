@@ -159,4 +159,12 @@ CREATE INDEX diff_testing_ba ON diff_testing(Base, Against);
 # bash
 ## go into every folder and rename *fastq.gz to fastq/folder_*fastq.gz
 for i in */*fastq.gz; do echo mv $i fastq/`dirname $i`_`basename $i` ; done
+
+## check if a file exists in a folder (reading in from a newline separated file)
+## this example has a wildcard ending (so "SRR20829076" would find SRR20829076.fastq.gz)
+while read srr; 
+  do if ls *${srr}* 2>/dev/null | grep -q .; 
+    then echo "FOUND: $srr";   
+      else  echo "MISSING: $srr";   fi; 
+  done < srr_list.txt
 ######################################
