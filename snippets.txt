@@ -102,6 +102,9 @@ your_data %>% group_by(cell_line, date) %>%
 
 # custom ggplot continuous color palette
 sc <- scale_colour_gradientn(colours = colorspace::lighten(c('yellow','purple','orange', 'red', 'green', 'blue'), amount = 0.2), limits=c(0, 3.5))
+
+# suppress library loading notes
+suppressMessages()
 #####################################
 # R notebook header and first chunk to hide extraneous output
 ---
