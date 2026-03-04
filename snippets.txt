@@ -1,5 +1,11 @@
 #####################################
 # R
+
+# dplyr search all columns in data frame
+df %>% filter(if_any(everything(), ~ . == "value1"))
+## or
+df %>%  filter(if_any(everything(), ~ grepl("pattern_to_search", .)))
+
 # ensembl to gene info 
 conv_table <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, 
                                     keys=gsub('\\.\\d+','',table$ensembl),
