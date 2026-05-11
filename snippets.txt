@@ -1,6 +1,9 @@
 #####################################
 # R
 
+# join two tibbles with mismatched data types in some columns
+new_tibble <- data.table::rbindlist(list(tibble1, tibble2), fill = TRUE)
+
 # dplyr search all columns in data frame
 df %>% filter(if_any(everything(), ~ . == "value1"))
 ## or
